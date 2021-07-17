@@ -8,21 +8,27 @@
   <link rel="stylesheet" type="text/css" href="./src/styles.css">
 </head>
 <body>
-  <div><input type="text" placeholder="input Todo"><button>Add</button></div>
-  <div>
-    <p>Non-Completed Todo</p>
+  <div class="input-area"
+  ><input type="text" placeholder="input Todo"><button>Add</button></div>
+  <div class="incomplete-area">
+    <p class="title">Non-Completed Todo</p>
     <ul>
-      <li>todo
-          <div>
+      <li class="list-row">todo
+        <div>
             <button>Fin</button><button>Delete</button>
           </div>
-        </li>
+      </li>
+      <li class="list-row">todo
+        <div>
+            <button>Fin</button><button>Delete</button>
+          </div>
+      </li>
     </ul>
   </div>
-  <div>
-    <p>Completed Todo</p>
+  <div class="complete-area">
+    <p class="title">Completed Todo</p>
     <ul>
-      <li>todo
+      <li class="list-row">todo
         <div>
           <button>Back</button>
         </div>
