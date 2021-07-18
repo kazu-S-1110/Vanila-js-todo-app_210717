@@ -11,9 +11,20 @@ const onClickAdd = () => {
   div.innerHTML = inputText;
 
   const completeButton = document.createElement('button');
-  completeButton.innerText = 'Fin';
+  completeButton.innerText = 'Finish';
   completeButton.addEventListener('click', () => {
+    const addTarget = completeButton.parentNode;
+    const text = addTarget.firstElementChild.innerText;
     deleteFromIncompleteList(completeButton.parentNode);
+    addTarget.textContent = null;
+    const div = document.createElement('div');
+    div.innerText = text;
+    const backButton = document.createElement('button');
+    backButton.innerText = 'Back';
+
+    addTarget.appendChild(div);
+    addTarget.appendChild(backButton);
+    document.getElementById('complete_list').appendChild(addTarget);
   });
 
   const deleteButton = document.createElement('button');
@@ -45,6 +56,22 @@ for (let i = 0; i < deleteButtonList.length; i++) {
 }
 
 const finButtonList = document.getElementsByClassName('finish_task');
+for (let i = 0; i < finButtonList.length; i++) {
+  const finButtonTag = finButtonList[i];
+  finButtonTag.addEventListener('click', () => {
+    deleteFromIncompleteList(finButtonTag.parentNode);
+    addTargetDef = finButtonTag.parentNode;
+    const textDef = addTargetDef.firstElementChild.innerText;
+    addTargetDef.textContent = null;
+    const div = document.createElement('div');
+    div.innerText = textDef;
+    const backButton = document.createElement('button');
+    backButton.innerText = 'Back';
+    addTargetDef.appendChild(div);
+    addTargetDef.appendChild(backButton);
+    document.getElementById('complete_list').appendChild(addTargetDef);
+  });
+}
 
 //削除する部分を共通化
 const deleteFromIncompleteList = (target) => {
