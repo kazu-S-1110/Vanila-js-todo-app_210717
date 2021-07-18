@@ -13,15 +13,14 @@ const onClickAdd = () => {
   const completeButton = document.createElement('button');
   completeButton.innerText = 'Fin';
   completeButton.addEventListener('click', () => {
-    alert();
+    deleteFromIncompleteList(completeButton.parentNode);
   });
 
   const deleteButton = document.createElement('button');
   deleteButton.innerText = 'Delete';
   deleteButton.addEventListener('click', () => {
     //親のliを削除する
-    const deleteTarget = deleteButton.parentNode; //parentNodeで親要素を取得する
-    document.getElementById('incomplete_list').removeChild(deleteTarget);
+    deleteFromIncompleteList(deleteButton.parentNode);
   });
 
   //liのなかにdivを定義
@@ -41,7 +40,13 @@ const deleteButtonList = document.getElementsByClassName('delete_task');
 for (let i = 0; i < deleteButtonList.length; i++) {
   const deleteButtonTag = deleteButtonList[i];
   deleteButtonTag.addEventListener('click', () => {
-    const deleteTargetDef = deleteButtonTag.parentNode;
-    document.getElementById('incomplete_list').removeChild(deleteTargetDef);
+    deleteFromIncompleteList(deleteButtonTag.parentNode);
   });
 }
+
+const finButtonList = document.getElementsByClassName('finish_task');
+
+//削除する部分を共通化
+const deleteFromIncompleteList = (target) => {
+  document.getElementById('incomplete_list').removeChild(target);
+};
